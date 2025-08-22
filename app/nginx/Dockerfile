@@ -1,3 +1,6 @@
 FROM nginx:alpine
-# we'll generate .htpasswd at runtime later; for now just use the base image
+# The entrypoint writes .htpasswd from env and starts nginx
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 COPY nginx.conf /etc/nginx/nginx.conf
+ENTRYPOINT ["/entrypoint.sh"]
