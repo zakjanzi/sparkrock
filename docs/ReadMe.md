@@ -1,42 +1,60 @@
 # Docs & Evidence
 
-This folder contains screenshots and artifacts demonstrating the working deployment, CI/CD, security, and monitoring.
+This folder contains screenshots and artifacts demonstrating the working deployment, CI/CD, security, and monitoring. For detailed documentation on this project and my thought process, refer to the readme doc in the root dir.
 
 ## Screenshots
 
-- **architecture.png**  
-  High-level diagram of the stack (VPC, ALB, ECS/Fargate, ECR, ACM, Secrets Manager, CloudWatch, SNS, GitHub OIDC).
+- **Architecture**
 
-![Architecture diagram](./images/sparkrock-assignment.png)
+  ![Architecture diagram](./images/sparkrock-assignment.png)
 
-- **01-actions-success.png**  
-  GitHub Actions run for `main` showing: OIDC assume role, ECR login, image builds/pushes, and ECS service rollout succeeded.
+- **GitHub Actions (success)**
 
-- **02-ecr-repos.png**  
-  ECR console listing three repositories: `frontend`, `backend`, `proxy` with `latest` (and/or commit SHA) tags pushed.
+  ![Actions success](./images/01-actions-success.png)
 
-- **03-ecs-service.png**  
-  ECS service details page with **Desired=1 / Running=1**, confirming the task is healthy on Fargate.
+- **ECR repositories**
 
-- **04-alb-listeners.png**  
-  ALB listeners showing **HTTP :80 → HTTPS redirect** and **HTTPS :443 → target group** forwarding.
+  ![ECR repos](./images/02-ecr-repos.png)
 
-- **05-cloudwatch-alarm-ok.png**  
-  CloudWatch alarm for **ECSServiceAverageCPUUtilization ≥ 70%** in **OK** state (include an additional `-alarm.png` if you triggered it).
+- **ECS service healthy**
 
-- **06-sns-email.png**  
-  Inbox screenshot of the SNS notification (test publish or actual alarm email).
+  ![ECS service](./images/03-ecs-service.png)
 
-- **07-site-401.png**  
-  Browser or cURL showing **401 Unauthorized** at `https://sparkrock.zakjanzi.me/` (proves Basic Auth is enforced).
+- **ECS service task list**
 
-- **08-site-200.png**  
-  After providing credentials (`sparkrock` / bcrypt in Secrets Manager), the dummy frontend loads over **HTTPS**.
+  ![ECS service](./images/03.1-ecs-task-list.png)
 
-- **09-acm-issued.png** 
-  ACM certificate status **ISSUED** for `sparkrock.zakjanzi.me`.
+- **ALB listeners**
 
-- **10-cloudflare-cname.png**  
-  Cloudflare DNS CNAME pointing `sparkrock.zakjanzi.me` to the ALB DNS name.
+  ![ALB listeners](./images/04-alb-listeners.png)
+
+- **CloudWatch alarm (OK)**
+
+  ![Alarm OK](./images/05-cloudwatch-alarm-ok.png)
+
+- **SNS email**
+
+  ![SNS email](./images/06-sns-email.png)
+
+- **Email Screenshot**
+
+  ![SNS email](./images/06.1-sns-email-test.png)
+
+- **Site 401**
+
+  ![401 Unauthorized](./images/07-site-401.png)
+
+- **Site 200**
+
+  ![200 OK](./images/08-site-200.png)
+
+- **ACM issued**
+
+  ![ACM issued](./images/09-acm-issued.png)
+
+- **Cloudflare CNAME**
+
+  ![Cloudflare DNS](./images/10-cloudflare-cname.png)
+
 
 

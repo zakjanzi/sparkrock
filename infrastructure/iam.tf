@@ -50,7 +50,6 @@ resource "aws_cloudwatch_log_group" "backend" {
   tags              = local.tags
 }
 
-# Secrets Manager: placeholder secret (value added later by you)
 resource "aws_secretsmanager_secret" "basic_auth" {
   name = "${local.name_prefix}-basic-auth"
   tags = local.tags

@@ -15,7 +15,7 @@ resource "aws_acm_certificate" "app" {
   }
 }
 
-# Helpful outputs: DNS records you must create in Cloudflare
+# Helpful outputs for creating DNS records later in Cloudflare
 output "acm_certificate_arn" {
   value       = aws_acm_certificate.app.arn
   description = "Use this in ALB HTTPS listener"

@@ -6,14 +6,14 @@ This repo deploys a Dockerized frontend, backend, and Nginx proxy to **AWS ECS F
 - **CI/CD** on push to `main` using **GitHub Actions OIDC** (no static AWS keys)
 - **Monitoring**: CloudWatch alarm when **CPU > 70%**, notified via SNS email
 
-**Staging URL:** `https://sparkrock.zakjanzi.me`  
+**URL:** `https://sparkrock.zakjanzi.me`  
 **Basic Auth:** username `sparkrock` (bcrypt stored in Secrets Manager)
 
 
 
 ## Architecture
 
-_Add architecture image here (e.g., `docs/architecture.png`)._
+![Architecture diagram](./docs/images/sparkrock-assignment.png)
 
 
 
@@ -35,7 +35,7 @@ nginx.local.conf # (used this for local testing; not used in ECS)
 ```
 
 
-## To Test Locally
+## To Test
 
 Go to https://sparkrock.zakjanzi.me
 

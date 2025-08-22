@@ -1,5 +1,7 @@
 # this is just a copy for review. Live workflow at: .github/workflows/deploy.yml
 
+name: deploy-staging
+
 on:
   push:
     branches: [ main ]
@@ -55,7 +57,12 @@ jobs:
           docker build -t "$ECR_PROXY:latest" -t "$ECR_PROXY:${GITHUB_SHA}" app/nginx
           docker push "$ECR_PROXY:latest"
           docker push "$ECR_PROXY:${GITHUB_SHA}"
+          
+      - name: Verify AWS identity & CLI
+        run: |
+          aws --version
+          aws sts get-caller-identity
 
       - name: Roll ECS service
-        run: |
-          aws ecs upda
+        run: aws ecs update-service --cluster "$CLUSTER" --service "$SERVICE" --force-new-deployment --desired-count 1
+

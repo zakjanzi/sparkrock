@@ -6,7 +6,6 @@ resource "aws_iam_openid_connect_provider" "github" {
 
   # GitHub OIDC root CA thumbprint (DigiCert Global Root G2)
   thumbprint_list = ["6938fd4d98bab03faadb97b34396831e3780aea1"]
-  # If your account already has this OIDC provider, we can import it later if needed.
 }
 
 # Trust policy so ONLY my repo on the main branch can assume the role
@@ -26,7 +25,6 @@ data "aws_iam_policy_document" "gha_oidc_trust" {
       values   = ["sts.amazonaws.com"]
     }
 
-    # Lock to your repo + branch (main)
     condition {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
