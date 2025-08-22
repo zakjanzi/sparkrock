@@ -1,0 +1,12 @@
+services:
+  frontend:
+    build: ./app/frontend
+  backend:
+    build: ./app/backend
+  proxy:
+    build: ./app/nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - frontend
+      - backend

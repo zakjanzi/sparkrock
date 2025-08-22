@@ -4,6 +4,7 @@ npm-debug.log*
 yarn.lock
 pnpm-lock.yaml
 
+
 # docker
 *.log
 .dockerignore
@@ -18,3 +19,6 @@ terraform.tfvars
 
 .DS_Store
 Thumbs.db
+aws/
+.terraform
+.terraform.lock.hcl

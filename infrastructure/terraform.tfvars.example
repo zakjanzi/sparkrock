@@ -1,0 +1,4 @@
+project      = "sparkrock-assignment"
+environment  = "staging"
+aws_region   = "eu-central-1"
+owner_email  = "zakjanzi@duck.com"
