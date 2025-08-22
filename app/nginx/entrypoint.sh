@@ -1,22 +1,15 @@
 #!/bin/sh
 set -e
-# Expect HTPASSWD_BCRYPT
+
+# If passed via env (ECS case), write it
 if [ -n "$HTPASSWD_BCRYPT" ]; then
   echo "$HTPASSWD_BCRYPT" > /etc/nginx/.htpasswd
-else
-  echo "WARNING: HTPASSWD_BCRYPT not set; Basic Auth will reject everyone" >&2
-  # wrote a dummy impossible hash so auth still enforced
-  echo 'sparkrock:$2y$10$ABCDEFGHIJKLMNOPQRSTUV/abcdefghijklmnopqrstuv1234567890abcdef' > /etc/nginx/.htpasswd
 fi
-exec nginx -g 'daemon off;'
-#!/bin/sh
-set -e
-# Expect HTPASSWD_BCRYPT
-if [ -n "$HTPASSWD_BCRYPT" ]; then
-  echo "$HTPASSWD_BCRYPT" > /etc/nginx/.htpasswd
-else
-  echo "WARNING: HTPASSWD_BCRYPT not set; Basic Auth will reject everyone" >&2
-  # wrote a dummy impossible hash so auth still enforced
-  echo 'sparkrock:$2y$10$ABCDEFGHIJKLMNOPQRSTUV/abcdefghijklmnopqrstuv1234567890abcdef' > /etc/nginx/.htpasswd
+
+# If no file present, bail out clearly
+if [ ! -s /etc/nginx/.htpasswd ]; then
+  echo "ERROR: /etc/nginx/.htpasswd missing. Set HTPASSWD_BCRYPT or mount a file." >&2
+  exit 1
 fi
+
 exec nginx -g 'daemon off;'

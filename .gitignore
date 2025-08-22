@@ -22,3 +22,5 @@ Thumbs.db
 aws/
 .terraform
 .terraform.lock.hcl
+.env*
+.htpasswd*
