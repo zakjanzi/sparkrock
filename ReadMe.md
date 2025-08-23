@@ -41,7 +41,7 @@ Go to https://sparkrock.zakjanzi.me
 
 username: sparkrock
 
-pass: localtest123!
+pass: sparkrock
 
 
 ## To Test via Curl
@@ -50,4 +50,4 @@ pass: localtest123!
 curl -I https://sparkrock.zakjanzi.me
 
 ### With Basic Auth (expected: 200 OK)
-curl -I -u sparkrock:localtest123! https://sparkrock.zakjanzi.me
+curl -I -u sparkrock:sparkrock https://sparkrock.zakjanzi.me
